@@ -1,12 +1,14 @@
-const grpc = require('grpc');
+const path = require('path');
+const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 
-const packageDefinition = protoLoader.loadSync('D:/gRPСServer/protobuf.proto', {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: true,
-    oneofs: true
+// Загружаем файл .proto
+const packageDefinition = protoLoader.loadSync(path.join(__dirname, 'protobuf.proto'), {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
 });
 
 const protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
@@ -15,94 +17,94 @@ const peoplePackage = protoDescriptor.peoplePackage;
 const client = new peoplePackage.PeopleService('localhost:50051', grpc.credentials.createInsecure());
 
 function addPerson() {
-    const person = {
-       id: "20",
-        name: 'Jack Black',
-        age: 20
-    };
+  const person = {
+    id: '1',
+    name: 'Alice Smith',
+    age: 30,
+  };
 
-    client.addPerson(person, (err, response) => {
-        if (err) {
-            console.error('Error:', err.message);
-        } else {
-            console.log('Response:', response.message);
-        }
-    });
+  client.addPerson(person, (err, response) => {
+    if (err) {
+      console.error('Error:', err.message);
+    } else {
+      console.log('Response:', response.message);
+    }
+  });
 }
 
 function findPersonByName() {
-    const request = {
-        name: 'Jack Black'
-    };
+  const request = {
+    name: 'Alice Smith',
+  };
 
-    client.findPersonByName(request, (err, response) => {
-        if (err) {
-            console.error('Error:', err.message);
-        } else {
-            console.log('Response:', response);
-        }
-    });
+  client.findPersonByName(request, (err, response) => {
+    if (err) {
+      console.error('Error:', err.message);
+    } else {
+      console.log('Response:', response);
+    }
+  });
 }
 
 function findPersonById() {
-    const request = {
-        id: '5'
-    };
+  const request = {
+    id: '1',
+  };
 
-    client.findPersonById(request, (err, response) => {
-        if (err) {
-            console.error('Error:', err.message);
-        } else {
-            console.log('Response:', response);
-        }
-    });
-}
-function updatePerson() {
-    const request = {
-        id: "5",
-        name: "John",
-        age: 22
+  client.findPersonById(request, (err, response) => {
+    if (err) {
+      console.error('Error:', err.message);
+    } else {
+      console.log('Response:', response);
     }
+  });
+}
 
-    client.updatePerson(request, (err, response) => {
-        if(err) {
-            console.error('Error:', err.message);
+function updatePerson() {
+  const request = {
+    id: '1',
+    name: 'Alice Johnson',
+    age: 31,
+  };
 
-        } else {
-            console.log('Response:', response);
-        }
-    })
+  client.updatePerson(request, (err, response) => {
+    if (err) {
+      console.error('Error:', err.message);
+    } else {
+      console.log('Response:', response.message);
+    }
+  });
 }
 
 function getAllPeople() {
-    const request = {};
+  const request = {};
 
-    client.getAllPeople(request, (err, response) => {
-        if (err) {
-            console.error('Error:', err.message);
-        } else {
-            console.log('Response:', response);
-        }
-    });
+  client.getAllPeople(request, (err, response) => {
+    if (err) {
+      console.error('Error:', err.message);
+    } else {
+      console.log('Response:', response.people);
+    }
+  });
 }
 
 function deletePerson() {
-    const request = {
-        id: "5"
-    }
+  const request = {
+    id: '1',
+  };
 
-    client.deletePerson(request, (err, response) => {
-        if (err) {
-            console.error('Error:', err.message);
-        } else {
-            console.log('Response:', response);
-        }
-    });
+  client.deletePerson(request, (err, response) => {
+    if (err) {
+      console.error('Error:', err.message);
+    } else {
+      console.log('Response:', response.message);
+    }
+  });
 }
 
-addPerson();
-// findPersonByName();
-// findPersonById();
-// updatePerson();
-// getAllPeople();
-// deletePerson();
+// Пример использования функций клиента
+addPerson();  // Добавить человека
+getAllPeople(); // Получить всех людей
+findPersonByName(); // Найти человека по имени
+updatePerson(); // Обновить информацию о человеке
+deletePerson(); // Удалить человека
