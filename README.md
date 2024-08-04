@@ -1,6 +1,6 @@
 # Инструкция по эксплуатации gRPC сервера
 
-1. Склонировать репозиторий на свой компьютер:
+1. Склонируйте репозиторий на свой компьютер:
    ```bash
    git clone https://github.com/shinkai-tester/gRPCServer.git
    ```
@@ -32,7 +32,7 @@
 - Нажмите **Service definition** => **Import a proto.file** => **Choose a File** => Выбрать **gRPCService.proto** => **Import as API** => **Create a New API**
 
 
-7. В адресную строку вводите *0.0.0.0:50051*
+7. В адресную строку введите *0.0.0.0:50051*
 
 
 8. Выбирайте метод, который хотите использовать в **Select a method**
