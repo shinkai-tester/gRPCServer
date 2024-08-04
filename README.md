@@ -9,7 +9,7 @@
 2. Установите зависимости для проекта:
 
    
-  **npm install grpc @grpc/proto-loader**
+  **npm install @grpc/grpc-js @grpc/proto-loader**
 
 
 3. Запустите gRPC сервер:
