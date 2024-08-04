@@ -2,7 +2,7 @@ const path = require('path');
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 
-// Загружаем файл .proto
+// Upload .proto
 const packageDefinition = protoLoader.loadSync(path.join(__dirname, 'protobuf.proto'), {
   keepCase: true,
   longs: String,
@@ -102,9 +102,10 @@ function deletePerson() {
   });
 }
 
-// Пример использования функций клиента
-addPerson();  // Добавить человека
-getAllPeople(); // Получить всех людей
-findPersonByName(); // Найти человека по имени
-updatePerson(); // Обновить информацию о человеке
-deletePerson(); // Удалить человека
+// Example usage of client functions
+addPerson();      // Add a person
+getAllPeople();   // Get all people
+findPersonByName(); // Find a person by name
+updatePerson();   // Update person information
+deletePerson();   // Delete a person
+

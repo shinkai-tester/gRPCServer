@@ -6,13 +6,13 @@
   **git clone https://github.com/JackBlaaack/gRPCServer.git**
 
 
-3. Установите зависимости для проекта:
+2. Установите зависимости для проекта:
 
    
   **npm install grpc @grpc/proto-loader**
 
 
-5. Запустите gRPC сервер:
+3. Запустите gRPC сервер:
 
    
    **node server.js**

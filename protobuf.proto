@@ -2,37 +2,30 @@ syntax = "proto3";
 
 package peoplePackage;
 
-// Определение сообщения Person
 message Person {
   string id = 1;       // Уникальный идентификатор
   string name = 2;     // Имя человека
   int32 age = 3;       // Возраст
 }
 
-// Сообщение запроса по ID
 message IdRequest {
   string id = 1;       // Идентификатор для поиска
 }
 
-// Сообщение запроса по имени
 message NameRequest {
   string name = 1;     // Имя для поиска
 }
 
-// Сообщение-ответ с текстом
 message Response {
   string message = 1;  // Сообщение об успехе или ошибке
 }
 
-// Сообщение для пустого запроса
 message Empty {}
 
-// Список людей
 message PeopleList {
   repeated Person people = 1; // Повторяющееся сообщение для списка людей
 }
 
-// Определение сервиса PeopleService
 service PeopleService {
   rpc AddPerson(Person) returns (Response);
   rpc FindPersonByName(NameRequest) returns (Person);

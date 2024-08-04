@@ -2,7 +2,7 @@ const path = require('path');
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 
-// Загружаем файл .proto
+// upload .proto
 const PROTO_PATH = path.join(__dirname, 'protobuf.proto');
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -17,7 +17,7 @@ const peopleProto = protoDescriptor.peoplePackage;
 
 const people = []; // Хранилище данных о людях
 
-// Проверка возраста
+// Checking age
 function checkAge(age) {
   const maxAge = 100;
   if (age <= 0 || age > maxAge) {
@@ -25,12 +25,12 @@ function checkAge(age) {
   }
 }
 
-// Проверка уникальности ID
+// Checking if id is unique
 function isIdUnique(id) {
   return !people.some(person => person.id === id);
 }
 
-// Добавление человека
+// Add person
 function addPerson(call, callback) {
   const person = call.request;
   try {
@@ -51,7 +51,7 @@ function addPerson(call, callback) {
   }
 }
 
-// Поиск человека по имени
+// Find person by name
 function findPersonByName(call, callback) {
   const name = call.request.name;
   const foundPerson = people.find(person => person.name.toLowerCase() === name.toLowerCase());
@@ -66,7 +66,7 @@ function findPersonByName(call, callback) {
   }
 }
 
-// Поиск человека по ID
+// Find person by ID
 function findPersonById(call, callback) {
   const id = call.request.id;
   const foundPerson = people.find(person => person.id === id);
@@ -80,7 +80,7 @@ function findPersonById(call, callback) {
   }
 }
 
-// Обновление информации о человеке
+// Update person's data
 function updatePerson(call, callback) {
   const person = call.request;
   try {
@@ -115,18 +115,18 @@ function updatePerson(call, callback) {
   }
 }
 
-// Получение списка всех людей
+// Get list of all people
 function getAllPeople(call, callback) {
   callback(null, { people: people });
 }
 
-// Удаление человека по ID
+//Delete person by ID
 function deletePerson(call, callback) {
   const idToDelete = call.request.id;
   const index = people.findIndex(person => person.id === idToDelete);
 
   if (index !== -1) {
-    people.splice(index, 1); // Удалить пользователя из массива
+    people.splice(index, 1);
     callback(null, { message: 'Person deleted successfully' });
   } else {
     callback({
