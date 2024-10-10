@@ -29,7 +29,7 @@
 6. Имплементируйте Protobuf
 
 
-- Нажмите **Service definition** => **Import a proto.file** => **Choose a File** => Выбрать **gRPCService.proto** => **Import as API** => **Create a New API**
+- Нажмите **Service definition** => **Import a proto.file** => **Choose a File** => Выбрать **protobuf.proto** => **Import as API** => **Create a New API**
 
 
 7. В адресную строку введите *0.0.0.0:50051*
