@@ -1,47 +1,47 @@
-# Инструкция по эксплуатации gRPC сервера
+# gRPC Server usage instructions
 
-1. Склонируйте репозиторий на свой компьютер:
+1. Clone the repository to your computer:
    ```bash
    git clone https://github.com/shinkai-tester/gRPCServer.git
    ```
-2. Установите [Node.js](https://nodejs.org/en/download/prebuilt-binaries)
+2. Install [Node.js](https://nodejs.org/en/download/prebuilt-binaries)
 
-   После установки можем проверить версии Node.js и npm (стандартный менеджер пакетов, устанавливается вместе с Node.js):
+   After installation, verify Node.js and npm versions (npm is a default package manager installed alongside Node.js):
    
    ```bash
    node -v
    npm -v
    ```
 
-3. Установите зависимости для проекта:
+3. Install project dependencies:
    ```bash
    npm install @grpc/grpc-js @grpc/proto-loader
    ```
    
-4. Запустите gRPC сервер:
+4. Run the gRPC server:
    ```bash
    node server.js
    ```
 
-5. Откройте Postman и создайте gRPC запрос
+5. Open Postman and create a gRPC request
 
 
-6. Имплементируйте Protobuf
+6. Implement Protobuf
 
 
-- Нажмите **Service definition** => **Import a proto.file** => **Choose a File** => Выбрать **protobuf.proto** => **Import as API** => **Create a New API**
+- Click **Service definition** => **Import a proto.file** => **Choose a File** => Select **protobuf.proto** => **Import as API** => **Create a New API**
 
 
-7. В адресную строку введите *0.0.0.0:50051*
+7. Enter *0.0.0.0:50051* into the address bar
 
 
-8. Выбирайте метод, который хотите использовать в **Select a method**
+8. Select the desired method from **Select a method**
 
-## Пример gRPC-запроса
+## Example gRPC request
 
-### Добавление пользователя
+### Adding a User
 
-**Запрос**:
+**Request**:
 ```json
           {
             "id": "1",
@@ -54,14 +54,14 @@
 grpcurl -plaintext -import-path . -proto protobuf.proto -d '{"id": "1", "name": "Jane Doe", "age": 30}' localhost:50051 peoplePackage.PeopleService/AddPerson
 ```
 
-**Ответ**:
+**Response**:
 ```json
           {
             "message": "Person added successfully"
           }
 ```
 
-## Об этом проекте
+## About this project
 
-Этот проект основан на оригинальном gRPC сервере, созданном пользователем [JackBlaaack](https://github.com/JackBlaaack). Оригинальный репозиторий можно найти по следующей ссылке: [gRPCServer](https://github.com/JackBlaaack/gRPCServer).
+This project is based on the original gRPC server created by [JackBlaaack](https://github.com/JackBlaaack). You can find the original repository at the following link: [gRPCServer](https://github.com/JackBlaaack/gRPCServer).
 
